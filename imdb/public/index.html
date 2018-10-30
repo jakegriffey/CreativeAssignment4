@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="javascripts/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <meta charset="utf-8">
+</head>
+
+<body ng-app="mainApp">
+    <div ng-controller="searchCtrl">
+        <h1>Search For A Movie</h1>
+        <form ng-submit = "findMovies()">
+            <input type="text" value="" ng-model = "searchName"></input>
+            <input type="submit" value="Submit"></input>
+        </form>
+        
+        <ol>
+            <li ng-repeat = "movie in foundMovies">
+                <p>{{movie.title}} ({{movie.year}})</p>
+                <img src={{movie.poster}}></img>
+                <button type="submit" value="addToFavorites">Add to Favorites</button>
+            </li>
+        </ol>
+    </div>
+</body>
+
+</html>
