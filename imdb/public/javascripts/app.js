@@ -34,4 +34,22 @@ mainApp.controller("searchCtrl", function($scope, $http) {
             console.log("Post failed");
         });
     };
+    
+    $scope.getFavorites = function() {
+        $scope.foundMovies = [];
+        var favoritesURL = "favorites";
+        
+        $http.get(favoritesURL).then(function(response) {
+            $scope.foundMovies = response;
+        });
+    };
+    
+    $scope.getRandom = function() {
+        var randomURL = "random";
+        $scope.foundMovies = [];
+        
+        $http.get(randomURL).then(function(response) {
+            $scope.foundMovies.push(response);
+        });
+    };
 });
