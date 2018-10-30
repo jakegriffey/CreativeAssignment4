@@ -20,9 +20,11 @@
             <li ng-repeat = "movie in foundMovies">
                 <p>{{movie.title}} ({{movie.year}})</p>
                 <img src={{movie.poster}}></img>
-                <button type="submit" value="addToFavorites">Add to Favorites</button>
+                <button type="submit" value="addToFavorites" ng-click = "addToFavorites(movie)">Add to Favorites</button>
             </li>
         </ol>
+        
+        
     </div>
 </body>
 

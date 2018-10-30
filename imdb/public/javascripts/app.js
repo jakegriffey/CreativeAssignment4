@@ -13,11 +13,25 @@ mainApp.controller("searchCtrl", function($scope, $http) {
                 let searchData = data.Search;
                 console.log(searchData);
                 searchData.forEach(function(item) {
-                    let movie = {title: item["Title"], year: item["Year"], poster: item["Poster"]};
+                    let movie = { title: item["Title"], year: item["Year"], poster: item["Poster"] };
                     console.log(movie);
                     $scope.foundMovies.push(movie);
                 });
             });
         }
+    };
+
+    $scope.addToFavorites = function(movie) {
+        var addURL = "addToFavorites";
+        
+        $http({
+            url: addURL,
+            method: "POST",
+            data: movie
+        }).success(function(data, status, headers, config) {
+            console.log("Post worked");
+        }).error(function(data, status, headers, config) {
+            console.log("Post failed");
+        });
     };
 });
