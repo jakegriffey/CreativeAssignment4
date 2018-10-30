@@ -18,20 +18,19 @@
 </head>
 
 <body ng-app="mainApp">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">WebSiteName</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li style="padding-top: 15px"><button ng-click="goHome()">Home </button> </li>
-                <li><a href="#">Page 1</a></li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
-            </ul>
-        </div>
-    </nav>
     <div ng-controller="searchCtrl">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Le Movies</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li style="padding-top: 15px; margin-right: 5px"><button ng-click="goHome()">Home </button> </li>
+                    <li style="padding-top: 15px; margin-right: 5px"><button ng-click="getFavorites()">Get Favorites </button> </li>
+                    <li style="padding-top: 15px; margin-right: 5px"><button ng-click="getRandom()">Get Random</button> </li>
+                </ul>
+            </div>
+        </nav>
         <h1>Search For A Movie</h1>
         <form ng-submit="findMovies()">
             <input type="text" value="" ng-model="searchName"></input>

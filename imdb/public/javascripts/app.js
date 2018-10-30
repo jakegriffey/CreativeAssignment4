@@ -38,13 +38,14 @@ mainApp.controller("searchCtrl", function($scope, $http) {
     $scope.getFavorites = function() {
         $scope.foundMovies = [];
         var favoritesURL = "favorites";
-        
+        console.log("get favorite movies")   
         $http.get(favoritesURL).then(function(response) {
             $scope.foundMovies = response;
         });
     };
     
     $scope.getRandom = function() {
+        console.log("get Random movies")   
         var randomURL = "random";
         $scope.foundMovies = [];
         
