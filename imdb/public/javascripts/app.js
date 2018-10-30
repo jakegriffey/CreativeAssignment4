@@ -6,6 +6,7 @@ mainApp.controller("searchCtrl", function($scope, $http) {
     $scope.randomMovie = [];
     $scope.searchName = "";
     $scope.showForm = true;
+    $scope.header = "Search For a Movie";
 
     $scope.findMovies = function() {
         $scope.foundMovies = [];
@@ -65,6 +66,8 @@ mainApp.controller("searchCtrl", function($scope, $http) {
         $scope.foundMovies = [];
         $scope.favoriteMovies = [];
         $scope.randomMovie = [];
-        $scope.showForm = false;
+        $scope.showForm = true;
+        $scope.header = "Home Page"
+        
     };
 });
