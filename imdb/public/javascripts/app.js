@@ -2,9 +2,14 @@ var mainApp = angular.module("mainApp", []);
 
 mainApp.controller("searchCtrl", function($scope, $http) {
     $scope.foundMovies = [];
+    $scope.favoriteMovies = [];
+    $scope.randomMovie = [];
     $scope.searchName = "";
+    $scope.showForm = true;
 
     $scope.findMovies = function() {
+        $scope.foundMovies = [];
+        
         if ($scope.searchName.length != 0) {
             console.log("Getting movies");
             var url = "findMovies?q=" + $scope.searchName;
@@ -37,10 +42,12 @@ mainApp.controller("searchCtrl", function($scope, $http) {
     
     $scope.getFavorites = function() {
         $scope.foundMovies = [];
+        $scope.randomMovie = [];
+        $scope.favoriteMovies = [];
         var favoritesURL = "favorites";
         console.log("get favorite movies")   
         $http.get(favoritesURL).then(function(response) {
-            $scope.foundMovies = response;
+            $scope.favoriteMovies = response;
         });
     };
     
@@ -52,5 +59,12 @@ mainApp.controller("searchCtrl", function($scope, $http) {
         $http.get(randomURL).then(function(response) {
             $scope.foundMovies.push(response);
         });
+    };
+    
+    $scope.goHome = function() {
+        $scope.foundMovies = [];
+        $scope.favoriteMovies = [];
+        $scope.randomMovie = [];
+        $scope.showForm = false;
     };
 });
