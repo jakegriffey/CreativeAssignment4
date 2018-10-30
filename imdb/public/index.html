@@ -6,25 +6,47 @@
     <script src="javascripts/app.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <meta charset="utf-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 
 <body ng-app="mainApp">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">WebSiteName</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li style="padding-top: 15px"><button ng-click="goHome()">Home </button> </li>
+                <li><a href="#">Page 1</a></li>
+                <li><a href="#">Page 2</a></li>
+                <li><a href="#">Page 3</a></li>
+            </ul>
+        </div>
+    </nav>
     <div ng-controller="searchCtrl">
         <h1>Search For A Movie</h1>
-        <form ng-submit = "findMovies()">
-            <input type="text" value="" ng-model = "searchName"></input>
+        <form ng-submit="findMovies()">
+            <input type="text" value="" ng-model="searchName"></input>
             <input type="submit" value="Submit"></input>
         </form>
-        
+
         <ol>
-            <li ng-repeat = "movie in foundMovies">
+            <li ng-repeat="movie in foundMovies">
                 <p>{{movie.title}} ({{movie.year}})</p>
                 <img src={{movie.poster}}></img>
-                <button type="submit" value="addToFavorites" ng-click = "addToFavorites(movie)">Add to Favorites</button>
+                <button type="submit" value="addToFavorites" ng-click="addToFavorites(movie)">Add to Favorites</button>
             </li>
         </ol>
-        
-        
+
+
     </div>
 </body>
 
