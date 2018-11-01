@@ -4,10 +4,10 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
     <script src="javascripts/app.js"></script>
-    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <meta charset="utf-8">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -17,34 +17,54 @@
 
 </head>
 
-<body ng-app="mainApp">
+<body ng-app="mainApp" class="blackBG">
     <div ng-controller="searchCtrl">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Le Movies</a>
+        <div class="container-fluid redBG">
+            <nav class="navbar navbar-default" style="margin-bottom: 0px;">
+                <div class="container-fluid blackBG">
+                    <div class="navbar-header whiteText">
+                        <a class="navbar-brand" href="#">Le Movies</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li style="padding-top: 8px; margin-right: 5px"><button class="btn btn-link whiteText" ng-click="goHome()">Home </button> </li>
+                        <li style="padding-top: 8px; margin-right: 5px"><button class="btn btn-link whiteText" ng-click="getFavorites()">Favorites </button> </li>
+                        <li style="padding-top: 8px; margin-right: 5px"><button class="btn btn-link whiteText" ng-click="getRandom()">Random</button> </li>
+                    </ul>
                 </div>
-                <ul class="nav navbar-nav">
-                    <li style="padding-top: 15px; margin-right: 5px"><button ng-click="goHome()">Home </button> </li>
-                    <li style="padding-top: 15px; margin-right: 5px"><button ng-click="getFavorites()">Get Favorites </button> </li>
-                    <li style="padding-top: 15px; margin-right: 5px"><button ng-click="getRandom()">Get Random</button> </li>
-                </ul>
+            </nav>
+            <h1 class="centered whiteText redCarpet">{{header}}</h1>
+        </div>
+        <form ng-submit="findMovies()" ng-show="showForm" style="padding: 25px">
+            <div class="form-group">
+                <input type="text" placeholder="Movie Title" class="form-control" ng-model="searchName"></input>
             </div>
-        </nav>
-        <h1>{{header}}</h1>
-        <form ng-submit="findMovies()" ng-show="showForm">
-            <input type="text" value="" ng-model="searchName"></input>
-            <input type="submit" value="Submit"></input>
+            <input type="submit" value="Submit" class="btn btn-primary"></input>
+
         </form>
 
-        <ol>
-            <li ng-repeat="movie in foundMovies">
-                <p>{{movie.title}} ({{movie.year}})</p>
-                <img src={{movie.poster}}></img>
-                <button type="submit" value="addToFavorites" ng-click="addToFavorites(movie)">Add to Favorites</button>
-            </li>
-        </ol>
+        <div class="blueGreenBG" style: "padding: 25px;">
+            <ul class="whiteText centered movieList">
+                <li ng-repeat="movie in foundMovies" style="padding: 25px;">
+                    <p>{{$index + 1}}. {{movie.title}} ({{movie.year}})</p>
+                    <img src={{movie.poster}} class="moviePoster"></img><br>
+                    <button type="submit" value="addToFavorites" ng-click="addToFavorites(movie)" class="btn btn-success">Add to Favorites</button>
+                </li>
+            </ul>
 
+            <ul class="whiteText centered movieList">
+                <li ng-repeat="movie in favoriteMovies">
+                    <p>{{movie.title}} ({{movie.year}})</p>
+                    <img src={{movie.poster}} class="moviePoster"></img>
+                </li>
+            </ul>
+
+            <ul class="whiteText centered movieList">
+                <li ng-repeat="movie in randomMovie">
+                    <p>{{movie.title}} ({{movie.year}})</p>
+                    <img src={{movie.poster}}class="moviePoster"></img>
+                </li>
+            </ul>
+        </div>
 
     </div>
 </body>

@@ -18,7 +18,14 @@ router.get("/findMovies", function(req, res, next) {
 
 router.post("/addToFavorites", function(req, res, next) {
   let movie = req.body;
-  if (!favoriteMovies.includes(movie)) {
+  let found = false
+  favoriteMovies.forEach(function(item) {
+    if(item.title == movie.title && item.year == movie.year && item.poster == movie.poster) {
+      found = true;
+    }
+  });
+  
+  if(!found) {
     favoriteMovies.push(movie);
   }
 

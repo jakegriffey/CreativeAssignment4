@@ -1,8 +1,67 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@font-face {
+  font-family: Blockletter;
+  src: url("./Blockletter.otf");
+}
+
+@font-face {
+  font-family: Emerald;
+  src: url("./Emerald Grey.otf")
+}
+
+@font-face {
+  font-family: Ritzy;
+  src: url("./RitzyNormal.ttf")
+}
+
+
+h1 {
+  font-family: Blockletter;
+  font-size: 64px;
+  padding-bottom: 95px;
+  padding-top: 75px;
+  text-shadow: -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
+}
+
+.blueGreenBG {
+  background-color: #19d1c1;
+}
+
+.centered {
+  text-align: center;
+}
+
+.moviePoster {
+  padding-bottom: 25px;
+}
+
+.whiteText {
+  color: white !important;
+}
+
+.redBG {
+  background-color: #ff7556;
+}
+
+.blackBG {
+    background-color: #2b2d2d;
+}
+
+.movieList {
+  list-style-type: none;
+  font-family: Emerald;
+  font-size: 32px;
+}
+
+.redCarpet {
+  background-image: url("https://pictures.ozy.com/pictures/600x337/6/1/3/9613_sb10065571a-001.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 a {
-  color: #00B7FF;
+  color: white !important;
 }

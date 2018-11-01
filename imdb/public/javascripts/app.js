@@ -22,6 +22,7 @@ mainApp.controller("searchCtrl", function($scope, $http) {
                     let movie = { title: item["Title"], year: item["Year"], poster: item["Poster"] };
                     console.log(movie);
                     $scope.foundMovies.push(movie);
+                     $scope.searchName = "";
                 });
             });
         }
@@ -45,10 +46,13 @@ mainApp.controller("searchCtrl", function($scope, $http) {
         $scope.foundMovies = [];
         $scope.randomMovie = [];
         $scope.favoriteMovies = [];
+        $scope.showForm = false;
+        $scope.header = "Favorite Movies";
+        
         var favoritesURL = "favorites";
         console.log("get favorite movies")   
         $http.get(favoritesURL).then(function(response) {
-            $scope.favoriteMovies = response;
+            $scope.favoriteMovies = response.data;
         });
     };
     
@@ -56,9 +60,13 @@ mainApp.controller("searchCtrl", function($scope, $http) {
         console.log("get Random movies")   
         var randomURL = "random";
         $scope.foundMovies = [];
+        $scope.favoriteMovies = [];
+        $scope.randomMovie = [];
+        $scope.showForm = false;
+        $scope.header = "Random Movie From Favorites"
         
         $http.get(randomURL).then(function(response) {
-            $scope.foundMovies.push(response);
+            $scope.randomMovie.push(response.data);
         });
     };
     
@@ -67,7 +75,6 @@ mainApp.controller("searchCtrl", function($scope, $http) {
         $scope.favoriteMovies = [];
         $scope.randomMovie = [];
         $scope.showForm = true;
-        $scope.header = "Home Page"
-        
+        $scope.header = "Search For A Movie";
     };
 });
